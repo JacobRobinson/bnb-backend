@@ -12,6 +12,11 @@ module.exports = function (app) {
       db.schema.createTable(tableName, table => {
         table.increments('id');
         //todo: add foreign keys & interval range
+        table.integer('property');
+        table.foreign('property').references('property.id');
+
+        table.integer('user');
+        table.foreign('user').references('users.id');
       })
         .then(() => console.log(`Created ${tableName} table`))
         .catch(e => console.error(`Error creating ${tableName} table`, e));

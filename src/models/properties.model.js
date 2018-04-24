@@ -10,8 +10,11 @@ module.exports = function (app) {
   db.schema.hasTable(tableName).then(exists => {
     if(!exists) {
       db.schema.createTable(tableName, table => {
-        table.increments('id').primary();
-        // table.foreign('owner');  //add column name, reference, FK
+        table.increments('id');
+
+        table.integer('owner');
+        table.foreign('owner').references('users.id');  //add column name, reference, FK)
+
         table.string('name');
         table.string('address');    //update to multiple strings
         table.string('type');       //restrict to vals
