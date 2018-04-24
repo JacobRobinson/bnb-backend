@@ -1,0 +1,37 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "4c1442d200b77b3dcbc9af111b558e18d1a64957ad6fece6e71b24f7c27f2a29c815dcc85c6440a2538d7d200c7d9ce82d50540cd514e8aeb70df62ae177655fd707d7c4a68e443287f70f4136eb754033650f5b2038dc998516f64e884ec38100449283bfcac2142ed45000072f2b7fcbfeaf4a432ed757cc7e6d9b7a92a10713458d9d1e0a2d72ef5468b813fedd3296196272858831c2b9450004796196988f1c8916dcb404a6c6ba7ebec8fe8caa3004788d8f83c32ff20fd192b68bf6b52a232c3ef97db4204e91bf22bf17521b883c1f51ff9138182a12e88166ed6605836aa04062f886e085863ed3739104e5b809ac9c6ce543735c3de8ffa47f9ab3",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "postgres": {
+    "client": "pg",
+    "connection": "postgres://bnb:@localhost:5432/bn_b_ch_backend"
+  }
+}
