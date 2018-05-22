@@ -11,10 +11,12 @@ module.exports = function (app) {
     if(!exists) {
       db.schema.createTable(tableName, table => {
         table.increments('id');
-        //todo: add foreign keys & interval range
+        //datafields
+        table.specificType('period', 'daterange');
+        table.unique('period');
+        // foreign keys
         table.integer('property');
         table.foreign('property').references('property.id');
-
         table.integer('user');
         table.foreign('user').references('users.id');
       })
