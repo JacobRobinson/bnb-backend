@@ -12,12 +12,12 @@ module.exports = function (app) {
       db.schema.createTable(tableName, table => {
         table.increments('id');
         //datafields
-        table.specificType('period', 'daterange');
+        table.specificType('period', 'daterange').notNullable();
         table.unique('period');
         // foreign keys
-        table.integer('property');
+        table.integer('property').notNullable();
         table.foreign('property').references('property.id');
-        table.integer('user');
+        table.integer('user').notNullable();
         table.foreign('user').references('users.id');
       })
         .then(() => console.log(`Created ${tableName} table`))

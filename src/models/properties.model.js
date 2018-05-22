@@ -12,16 +12,16 @@ module.exports = function (app) {
       db.schema.createTable(tableName, table => {
         table.increments('id');
 
-        table.integer('owner');
+        table.integer('owner').notNullable();
         table.foreign('owner').references('users.id');  //add column name, reference, FK)
 
-        table.string('name');
-        table.string('address');    //update to multiple strings
-        table.string('type');       //restrict to vals
-        table.string('image_url');
-        table.integer('capacity');
-        table.integer('beds');
-        table.float('price');       //nightly
+        table.string('name').notNullable();
+        table.string('address').notNullable();    //update to multiple strings
+        table.string('type').notNullable();       //restrict to vals
+        table.string('image_url').notNullable();
+        table.integer('capacity').notNullable();
+        table.integer('beds').notNullable();
+        table.float('price').notNullable();       //nightly
       })
         .then(() => console.log(`Created ${tableName} table`))
         .catch(e => console.error(`Error creating ${tableName} table`, e));
