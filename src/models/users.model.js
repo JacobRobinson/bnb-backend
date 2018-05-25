@@ -13,7 +13,7 @@ module.exports = function (app) {
         table.increments('id');
       
         table.string('email').unique();
-        table.string('password');
+        table.string('password').notNullable();
       
       })
         .then(() => console.log(`Created ${tableName} table`))
